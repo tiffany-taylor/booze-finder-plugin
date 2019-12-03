@@ -1,1 +1,1 @@
-# booze-finder
+# Booze-finder plugin
