@@ -4,6 +4,7 @@ namespace AsyncBot\Plugin\BoozeFinder;
 
 use Amp\Promise;
 use AsyncBot\Core\Http\Client;
+use AsyncBot\Plugin\BoozeFinder\Retriever\SearchOnDistillerDotCom;
 
 final class Plugin
 {
@@ -16,6 +17,6 @@ final class Plugin
 
     public function search(string $keywords): Promise
     {
-
+        return (new SearchOnDistillerDotCom($this->httpClient))->retrieve($keywords);
     }
 }
