@@ -5,6 +5,7 @@ namespace AsyncBot\Plugin\BoozeFinder\Retriever;
 
 use Amp\Promise;
 use AsyncBot\Core\Http\Client;
+use AsyncBot\Plugin\BoozeFinder\Parser\DistillerDotCom;
 use function Amp\call;
 
 final class SearchOnDistillerDotCom
@@ -22,6 +23,8 @@ final class SearchOnDistillerDotCom
             $dom = yield $this->httpClient->requestHtml(
                 sprintf('https://distiller.com/search?term=%s', urlencode($command)),
             );
+
+            return (new DistillerDotCom())->parse($dom);
         });
     }
 }
