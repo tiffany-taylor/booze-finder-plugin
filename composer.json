@@ -10,7 +10,8 @@
     "require": {
         "php": "^7.4",
         "amphp/amp": "^2.2.0",
-        "async-bot/core": "dev-master"
+        "async-bot/core": "dev-master",
+        "ext-dom": "*"
     },
     "require-dev": {
         "infection/infection": "^0.13.4",
