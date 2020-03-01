@@ -6,6 +6,7 @@ namespace AsyncBot\Plugin\BoozeFinder\Retriever;
 use Amp\Promise;
 use AsyncBot\Core\Http\Client;
 use AsyncBot\Plugin\BoozeFinder\Parser\DistillerDotCom;
+use AsyncBot\Plugin\BoozeFinder\ValueObject\Booze;
 use function Amp\call;
 
 final class SearchOnDistillerDotCom
@@ -17,6 +18,9 @@ final class SearchOnDistillerDotCom
         $this->httpClient = $httpClient;
     }
 
+    /**
+     * @return Promise<Booze|null>
+     */
     public function retrieve(string $command): Promise
     {
         return call(function () use ($command) {

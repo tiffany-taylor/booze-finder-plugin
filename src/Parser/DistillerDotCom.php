@@ -4,10 +4,11 @@
 namespace AsyncBot\Plugin\BoozeFinder\Parser;
 
 use function Room11\DOMUtils\xpath_html_class;
+use AsyncBot\Plugin\BoozeFinder\ValueObject\Booze;
 
 final class DistillerDotCom
 {
-    public function parse(\DOMDocument $dom)
+    public function parse(\DOMDocument $dom): ?Booze
     {
         $xpath = new \DOMXpath($dom);
 
@@ -15,10 +16,7 @@ final class DistillerDotCom
             return null;
         }
 
-        return [
-            'name'          => $this->getName($xpath),
-            'rating'        => $this->getRating($xpath),
-        ];
+        return (new Booze($this->getName($xpath), $this->getRating($xpath)));
     }
 
     private function isBoozeFound(\DOMXPath $xpath): bool
