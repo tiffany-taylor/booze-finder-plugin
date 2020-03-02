@@ -4,6 +4,7 @@
 namespace AsyncBot\Plugin\BoozeFinder\Parser;
 
 use function Room11\DOMUtils\xpath_html_class;
+use AsyncBot\Plugin\BoozeFinder\Exception\UnexpectedHtmlFormat;
 use AsyncBot\Plugin\BoozeFinder\ValueObject\Booze;
 
 final class DistillerDotCom
@@ -26,12 +27,26 @@ final class DistillerDotCom
 
     private function parseName(\DOMXpath $xpath): string
     {
-        return $xpath->evaluate('//h5['.xpath_html_class('name-content').']/div['.xpath_html_class('name').']')->item(0)->textContent;
+        /** @var \DOMNodeList $nameNodes */
+        $nameNodes = $xpath->evaluate('//h5['.xpath_html_class('name-content').']/div['.xpath_html_class('name').']');
+
+        if (!$nameNodes->length) {
+            throw new UnexpectedHtmlFormat('name');
+        }
+
+        return $nameNodes->item(0)->textContent;
     }
 
     private function parseRating(\DOMXPath $xpath): string
     {
-        return trim($xpath->evaluate('//h3['.xpath_html_class('expert-rating').']')->item(0)->textContent);
+        /** @var \DOMNodeList $ratingNodes */
+        $ratingNodes = $xpath->evaluate('//h3['.xpath_html_class('expert-rating').']');
+
+        if (!$ratingNodes->length) {
+            throw new UnexpectedHtmlFormat('rating');
+        }
+
+        return trim($ratingNodes->item(0)->textContent);
     }
 
 }
