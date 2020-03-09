@@ -4,7 +4,7 @@
 namespace AsyncBot\Plugin\BoozeFinder\ValueObject;
 
 
-final class Booze
+final class Spirit
 {
     private string $name;
     private string $rating;

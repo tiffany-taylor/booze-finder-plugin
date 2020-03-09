@@ -4,16 +4,16 @@
 namespace AsyncBot\Plugin\BoozeFinderTest\Unit\ValueObject;
 
 
-use AsyncBot\Plugin\BoozeFinder\ValueObject\Booze;
+use AsyncBot\Plugin\BoozeFinder\ValueObject\Spirit;
 use PHPUnit\Framework\TestCase;
 
-class BoozeTest extends TestCase
+class SpiritTest extends TestCase
 {
-    private Booze $booze;
+    private Spirit $booze;
 
     protected function setUp(): void
     {
-        $this->booze = new Booze('name', 'rating');
+        $this->booze = new Spirit('name', 'rating');
     }
 
     public function testGetName(): void

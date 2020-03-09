@@ -6,7 +6,7 @@ namespace AsyncBot\Plugin\BoozeFinderTest\Unit\Retriever;
 use Amp\Http\Client\HttpClientBuilder;
 use AsyncBot\Core\Http\Client;
 use AsyncBot\Plugin\BoozeFinder\Retriever\SearchOnDistillerDotCom;
-use AsyncBot\Plugin\BoozeFinder\ValueObject\Booze;
+use AsyncBot\Plugin\BoozeFinder\ValueObject\Spirit;
 use AsyncBot\Plugin\BoozeFinderTest\Fakes\HttpClient\MockResponseInterceptor;
 use PHPUnit\Framework\TestCase;
 use function Amp\Promise\wait;
@@ -23,7 +23,7 @@ class SearchOnDistillerDotComTest extends TestCase
 
         $booze = wait((new SearchOnDistillerDotCom($httpClient))->retrieve('lagavulin'));
 
-        $this->assertInstanceOf(Booze::class, $booze);
+        $this->assertInstanceOf(Spirit::class, $booze);
     }
 
 }

@@ -5,11 +5,11 @@ namespace AsyncBot\Plugin\BoozeFinder\Parser;
 
 use function Room11\DOMUtils\xpath_html_class;
 use AsyncBot\Plugin\BoozeFinder\Exception\UnexpectedHtmlFormat;
-use AsyncBot\Plugin\BoozeFinder\ValueObject\Booze;
+use AsyncBot\Plugin\BoozeFinder\ValueObject\Spirit;
 
 final class DistillerDotCom
 {
-    public function parse(\DOMDocument $dom): ?Booze
+    public function parse(\DOMDocument $dom): ?Spirit
     {
         $xpath = new \DOMXpath($dom);
 
@@ -17,7 +17,7 @@ final class DistillerDotCom
             return null;
         }
 
-        return (new Booze($this->parseName($xpath), $this->parseRating($xpath)));
+        return (new Spirit($this->parseName($xpath), $this->parseRating($xpath)));
     }
 
     private function isBoozeFound(\DOMXPath $xpath): bool

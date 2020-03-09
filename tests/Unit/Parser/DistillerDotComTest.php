@@ -5,7 +5,7 @@ namespace AsyncBot\Plugin\BoozeFinderTest\Unit\Parser;
 
 use AsyncBot\Plugin\BoozeFinder\Exception\UnexpectedHtmlFormat;
 use AsyncBot\Plugin\BoozeFinder\Parser\DistillerDotCom;
-use AsyncBot\Plugin\BoozeFinder\ValueObject\Booze;
+use AsyncBot\Plugin\BoozeFinder\ValueObject\Spirit;
 use PHPUnit\Framework\TestCase;
 use function Room11\DOMUtils\domdocument_load_html;
 
@@ -31,7 +31,7 @@ class DistillerDotComTest extends TestCase
             $this->getDomFromFakeResponse('valid.html'),
         );
 
-        $this->assertInstanceOf(Booze::class, $booze);
+        $this->assertInstanceOf(Spirit::class, $booze);
     }
 
     public function testParseReturnsCorrectName(): void

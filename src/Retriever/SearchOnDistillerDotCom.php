@@ -6,7 +6,7 @@ namespace AsyncBot\Plugin\BoozeFinder\Retriever;
 use Amp\Promise;
 use AsyncBot\Core\Http\Client;
 use AsyncBot\Plugin\BoozeFinder\Parser\DistillerDotCom;
-use AsyncBot\Plugin\BoozeFinder\ValueObject\Booze;
+use AsyncBot\Plugin\BoozeFinder\ValueObject\Spirit;
 use function Amp\call;
 
 final class SearchOnDistillerDotCom
@@ -19,7 +19,7 @@ final class SearchOnDistillerDotCom
     }
 
     /**
-     * @return Promise<Booze|null>
+     * @return Promise<Spirit|null>
      */
     public function retrieve(string $command): Promise
     {
